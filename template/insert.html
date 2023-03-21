@@ -1,0 +1,18 @@
+{% extends "parent.html" %}
+
+{% block content %}
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-7 mx-auto">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+  
+{% endblock content %}
