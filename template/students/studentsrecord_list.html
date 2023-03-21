@@ -1,0 +1,37 @@
+{% extends "parent.html" %}
+
+{% block content %}
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-7 mx-auto">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Contact</th>
+                        <th>City</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in object_list  %}
+                      <tr>
+                            <td>{{ student.id }}</td>
+                            <td>{{ student.name }}</td>
+                            <td>{{ student.email }}</td>
+                            <td>{{ student.contact }}</td>
+                            <td>{{ student.city }}</td>
+                            <td><a href="" class="btn btn-danger">Del</a></td>
+                      </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+  
+{% endblock content %}
