@@ -10,6 +10,13 @@
 </head>
 <body>
     
+    {% if user.is_authenticated %}
+    <h2>You are logged in {{ user.username }}</h2>
+        <a href="{% url 'LogoutView' %}" class="href">Logout</a>
+    {% else %}
+        <a href="{% url 'LoginView' %}">Login</a>
+        <a href="{% url 'LoginView' %}">Signup</a>
+    {% endif %}
     {% block content %}
         
     {% endblock content %}

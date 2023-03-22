@@ -1,15 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,HttpResponse,redirect
 from .models import *
-# from .forms import *
-#for genric
 from django.views.generic import *
-
-# def homePage(r):
-#     data = {
-#         "students": StudentsRecord.objects.all()
-#     }
-
-#     return render(r, "studentrecords_list.html", data)
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate,login,logout
 
 class StudentView(ListView):
     model = StudentsRecord
@@ -34,3 +27,28 @@ class StudentEditView(UpdateView):
     fields = "__all__"
     success_url = "/"
     template_name = "./insert.html"
+
+class LoginView(FormView):
+    template_name = "./login.html"
+    form_class = AuthenticationForm
+    success_url = "/"
+    
+    def post(self,request):
+        username  = request.POST.get('username')
+        password  = request.POST.get('password')
+        user = authenticate(username=username,password=password)
+        if user is not None:
+            if user.is_active:
+                login(request,user)
+                return redirect("homepage")
+            else:
+                return HttpResponse("User is not activated")
+        else:
+            return HttpResponse("Invalid user name and password")
+        return HttpResponse("Login Checking")
+    
+class LogoutView(View):
+    def get(self,r):
+        logout(r)
+        return redirect("homepage")
+    

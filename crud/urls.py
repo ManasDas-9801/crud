@@ -8,4 +8,6 @@ urlpatterns = [
     path('insert/', StudentFormView.as_view(), name="insertPage"),
     path('<pk>/student-delete/', DeleteStudentView.as_view(), name="deleteStudent"),
     path('<pk>/student-edit/', StudentEditView.as_view(), name="StudentEditView"),
+    path('login/', LoginView.as_view(), name="LoginView"),
+    path('logout/', LogoutView.as_view(), name="LogoutView"),
 ]
