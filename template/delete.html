@@ -1,0 +1,10 @@
+<div class="row">
+    <div class="col-8 mx-auto">
+        <form action="" method="post">
+            {% csrf_token %}
+            <h2>Are You want to delete {{ object }}?</h2>
+            <input type="submit" value="Confirm">
+            <a href="{% url 'homepage' %}">Cancel</a>
+            </form>
+    </div>
+</div>
